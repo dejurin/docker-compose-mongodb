@@ -29,10 +29,6 @@ systemLog:
 processManagement:
   fork: true  # Fork the process to run in the background
 
-# Set various options
-setParameter:
-  enableLocalhostAuthBypass: false  # Disable localhost authentication bypass
-
 setParameter:
   enableLocalhostAuthBypass: false
   wiredTigerConcurrentReadTransactions: 128
