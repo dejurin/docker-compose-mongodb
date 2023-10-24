@@ -16,7 +16,6 @@ services:
       MONGO_PORT: ${MONGO_PORT}
     ports:
       - 27017:${MONGO_PORT}
-    command: mongod --port ${MONGO_PORT}
     expose:
       - ${MONGO_PORT}
     networks:
