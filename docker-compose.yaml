@@ -13,6 +13,7 @@ services:
       APP_MONGO_DATABASE: ${APP_MONGO_DATABASE}
       APP_MONGO_USERNAME: ${APP_MONGO_USERNAME}
       APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
+    user: mongodb:mongodb
     ports:
       - ${MONGO_PORT}:${MONGO_PORT}
     expose:
