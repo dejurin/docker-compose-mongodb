@@ -4,7 +4,7 @@ if [[ -f "${MONGO_INIT_COMPLETE_FILE_PATH}" ]]; then
   echo "MongoDB initiation has been completed."
 else
    # Create a MongoDB user
-  mongosh -u "${MONGO_INITDB_ROOT_USERNAME}" -p "${MONGO_INITDB_ROOT_PASSWORD}" <<EOF
+  mongosh -u "${MONGO_INITDB_ROOT_USERNAME}" -p "${MONGO_INITDB_ROOT_PASSWORD}" --port "${MONGO_PORT}" <<EOF
     use ${APP_MONGO_DATABASE}
     db.createUser({
       user: "${APP_MONGO_USERNAME}",
