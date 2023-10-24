@@ -17,15 +17,21 @@ services:
       - ${MONGO_PORT}:${MONGO_PORT}
     expose:
       - ${MONGO_PORT}
+    networks:
+      - app-tier
     restart: always
     volumes:
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - ./mongodb/dump:/home/dump:ro
       - ./mongodb/mongod.conf:/etc/mongod.conf
       - ./mongodb/db:/data/db
-      - ./mongodb/log:/var/log/mongodb
+      - ./mongodb/data/log:/var/log/mongodb
     healthcheck:
       test: [CMD, mongosh, --eval, db.adminCommand("ping")]
       interval: 60s
       timeout: 3s
       retries: 3
+
+networks:
+  app-tier:
+    driver: bridge
