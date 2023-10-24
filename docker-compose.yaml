@@ -15,7 +15,8 @@ services:
       APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
       MONGO_PORT: ${MONGO_PORT}
     ports:
-      - 27017:${MONGO_PORT}
+      - ${MONGO_PORT}:${MONGO_PORT}
+    command: mongod --port ${MONGO_PORT}
     expose:
       - ${MONGO_PORT}
     networks:
