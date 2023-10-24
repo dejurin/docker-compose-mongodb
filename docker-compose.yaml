@@ -23,7 +23,7 @@ services:
     volumes:
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - ./mongodb/dump:/home/dump:ro
-      - ./mongodb/etc:/etc
+      - ./mongodb/mongod.conf:/etc/mongod.conf
       - ./mongodb/db:/data/db
       - ./mongodb/log:/var/log/mongodb
     healthcheck:
