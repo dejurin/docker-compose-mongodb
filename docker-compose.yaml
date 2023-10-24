@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  mongodb:
+    image: mongo:latest
+    hostname: mongodb
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INIT_COMPLETE_FILE_PATH: ${MONGO_INIT_COMPLETE_FILE_PATH}
+      APP_MONGO_DATABASE: ${APP_MONGO_DATABASE}
+      APP_MONGO_USERNAME: ${APP_MONGO_USERNAME}
+      APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    expose:
+      - ${MONGO_PORT}
+    restart: always
+    volumes:
+      - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - ./mongodb/dump:/home/dump:ro
+      - ./mongodb/mongod.conf:/etc/mongod.conf
+      - ./mongodb/db:/data/db
+      - ./mongodb/log:/var/log/mongodb
+    healthcheck:
+      test: [CMD, mongosh, --eval, db.adminCommand("ping")]
+      interval: 60s
+      timeout: 3s
+      retries: 3
