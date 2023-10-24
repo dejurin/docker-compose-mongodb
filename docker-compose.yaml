@@ -28,9 +28,9 @@ services:
       - ./mongodb/db:/data/db
     healthcheck:
       test: ["CMD", "mongosh", "--eval", 'db.adminCommand("ping")']
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      interval: 10s
+      timeout: 5s
+      retries: 1
 
 networks:
   app-tier:
