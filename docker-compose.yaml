@@ -13,7 +13,6 @@ services:
       APP_MONGO_DATABASE: ${APP_MONGO_DATABASE}
       APP_MONGO_USERNAME: ${APP_MONGO_USERNAME}
       APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
-    user: mongodb:mongodb
     ports:
       - ${MONGO_PORT}:${MONGO_PORT}
     expose:
@@ -24,7 +23,6 @@ services:
     volumes:
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - ./mongodb/dump:/home/dump:ro
-      - ./mongodb/mongod.conf:/etc/mongod.conf
       - ./mongodb/db:/data/db
       - ./mongodb/log:/var/log/mongodb
     healthcheck:
