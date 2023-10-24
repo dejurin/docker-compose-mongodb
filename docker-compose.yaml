@@ -16,7 +16,6 @@ services:
       MONGO_PORT: ${MONGO_PORT}
     ports:
       - 27018:${MONGO_PORT}
-    command: --port ${MONGO_PORT}
     expose:
       - ${MONGO_PORT}
     networks:
