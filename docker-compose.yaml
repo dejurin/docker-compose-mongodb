@@ -14,7 +14,7 @@ services:
       APP_MONGO_USERNAME: ${APP_MONGO_USERNAME}
       APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - 27017:${MONGO_PORT}
     expose:
       - ${MONGO_PORT}
     networks:
