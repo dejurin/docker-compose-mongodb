@@ -24,10 +24,8 @@ services:
     restart: always
     volumes:
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
-      - ./mongodb/dump:/home/dump:ro
       - ./mongodb/mongod.conf:/etc/mongod.conf
       - ./mongodb/db:/data/db
-      - ./mongodb/log:/var/log/mongodb
     healthcheck:
       test: [CMD, mongosh, --eval, db.adminCommand("ping")]
       interval: 60s
