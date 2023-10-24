@@ -25,7 +25,7 @@ services:
       - ./mongodb/dump:/home/dump:ro
       - ./mongodb/mongod.conf:/etc/mongod.conf
       - ./mongodb/db:/data/db
-      - ./mongodb/data/log:/var/log/mongodb
+      - ./mongodb/log:/var/log/mongodb
     healthcheck:
       test: [CMD, mongosh, --eval, db.adminCommand("ping")]
       interval: 60s
