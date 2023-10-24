@@ -14,9 +14,9 @@ services:
       APP_MONGO_USERNAME: ${APP_MONGO_USERNAME}
       APP_MONGO_PASSWORD: ${APP_MONGO_PASSWORD}
     ports:
-      - 27017:${MONGO_PORT}
+      - 27017:27017
     expose:
-      - ${MONGO_PORT}
+      - 27017
     networks:
       - app-tier
     restart: always
